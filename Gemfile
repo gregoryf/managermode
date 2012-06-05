@@ -9,6 +9,7 @@ gem 'pg'
 gem 'bcrypt-ruby'
 gem 'simple_form', '~> 2.0'
 gem 'twitter-bootstrap-rails'
+gem 'cancan'
 
 group :development, :testing do
   gem 'rspec-rails'
