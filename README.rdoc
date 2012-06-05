@@ -1,0 +1,3 @@
+== Manager-Mode
+
+An open source Rails 3.2 application that lets gamers share their career mode seasons online with each other in a forum-like community.
