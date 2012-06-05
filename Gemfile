@@ -6,7 +6,16 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'bcrypt-ruby'
+gem 'simple_form', '~> 2.0'
+gem 'twitter-bootstrap-rails'
 
+group :development, :testing do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'capybara'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
