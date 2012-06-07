@@ -1,7 +1,12 @@
 Managermode::Application.routes.draw do
+  match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy'
   match 'register' => 'users#new'
   
   resources :users
+  resources :sessions
+  
+  root to: 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
