@@ -1,0 +1,20 @@
+<%= form_tag sessions_path do %>
+	<legend>Login</legend>
+	<div class="control-group string">
+		<%= label_tag :username, "Username", class: 'control-label' %>
+		<div class="controls">
+    	<%= text_field_tag :username, params[:username] %>
+		</div>
+	</div>
+	<div class="control-group string">
+		<%= label_tag :password, "Password", class: 'control-label' %>
+		<div class="controls">
+    	<%= password_field_tag :password %>
+		</div>
+	</div>
+	
+	
+  <div class="form-actions">
+		<%= submit_tag "Log in", class: 'btn btn-primary' %>
+  </div>
+<% end %>
