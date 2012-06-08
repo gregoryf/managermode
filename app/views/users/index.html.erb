@@ -23,8 +23,9 @@
         <td><%=l user.created_at %></td>
         <td>
 					<% if can? :update, user %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_user_path(user), :class => 'btn btn-mini' %>
+          <%= link_to 'Edit',
+                      profile_path(),
+											:class => 'btn btn-mini' %>
 					<% end %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       user_path(user),
