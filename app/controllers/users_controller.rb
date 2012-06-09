@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   
+  before_filter :require_login, only: [:edit]
+  
   def index
     @users = User.all
   end
@@ -27,19 +29,26 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
 
-    if @user.update_attributes(params[:user])
-      redirect_to @user, notice: 'User was successfully updated.'
+    if @user.authenticate(params[:old_password])
+      params[:user] = params[:user].slice(:password, :password_confirmation)
+      if @user.update_attributes(params[:user])
+        redirect_to admin_url, notice: 'User was successfully updated.'
+      else
+        flash.now.alert = "Unable to update the password two..."
+        render 'edit'
+      end
     else
-      render action: "edit"
+      flash.now.alert = "Unable to update password!"
+      @password_error = true
+      render 'edit'
     end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
     redirect_to users_url
   end
 end

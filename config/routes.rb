@@ -3,14 +3,15 @@ Managermode::Application.routes.draw do
   
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
-  match '/register' => 'users#new'
-  
-  match 'users/:username'  => 'users#show', :as => 'show_user',  :via => :get
+  resources :sessions, only: [:create]
   
   scope '/settings' do
-    match 'profile' => 'users#edit'
+    match '/admin' => 'users#edit', via: :get
+    match '/admin' => 'users#update', via: :put
   end
-  
+
+  match '/register' => 'users#new'
+  match ':username'  => 'users#show', :as => 'show_user',  :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
