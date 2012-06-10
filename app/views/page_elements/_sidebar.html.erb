@@ -1,0 +1,6 @@
+<div class="span2">
+	<ul class="nav nav-list">
+		<li class="<%= if is_current_page?("users", "edit", "update") then "active" end %>"><%= link_to link_to_icon('home', 'Admin'), admin_path %></li>
+		<li class="<%= if is_current_page?("users", "show") then "active" end %>"><%= link_to link_to_icon('user', 'Profile'), admin_path %></li>
+	</ul>
+</div>
