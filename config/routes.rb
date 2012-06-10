@@ -1,12 +1,14 @@
 Managermode::Application.routes.draw do
   root to: 'users#index'
   
-  match '/login' => 'sessions#new'
+  match '/login' => 'sessions#new', via: :get
+  match '/login' => 'sessions#create', via: :post
   match '/logout' => 'sessions#destroy'
   
   scope '/settings' do
     match '/admin' => 'users#edit', via: :get
     match '/admin' => 'users#update', via: :put
+    match '/cancel_account' => 'users#destroy', via: :delete
   end
 
   match '/register' => 'users#new', via: :get

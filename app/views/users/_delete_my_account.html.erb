@@ -1,0 +1,11 @@
+<legend>Delete Your Account</legend>
+<div class="alert alert-error">
+	<h3>Warning!</h3>
+	<p>Deleting your account is irreversible! Only press the delete button if you are certain you want to <strong>permanently delete</strong> your account.
+	<p><strong>Yes, I'm sure I want to delete my account</strong></p>
+	<%= link_to 'Delete My Account',
+              cancel_account_url,
+							method: :delete,
+							confirm: "Are you sure?",
+							:class => 'btn btn-danger btn-large' %>
+</div>
