@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, flash: { success: 'User was successfully created.' }
     else
       render action: "new"
     end
@@ -34,13 +34,13 @@ class UsersController < ApplicationController
     if @user.authenticate(params[:old_password])
       params[:user] = params[:user].slice(:password, :password_confirmation)
       if @user.update_attributes(params[:user])
-        redirect_to admin_url, notice: 'User was successfully updated.'
+        redirect_to admin_url, flash: { success: 'User was successfully updated.' }
       else
-        flash.now.alert = "Unable to update the password two..."
+        flash.now[:error] = "There was a problem saving your new password."
         render 'edit'
       end
     else
-      flash.now.alert = "Unable to update password!"
+      flash.now[:error] = "There was a problem saving your new password."
       @password_error = true
       render 'edit'
     end
