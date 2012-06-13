@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_login, only: [:edit]
   
   def index
-    @users = User.all
+    @users = User.where(active: true)
   end
 
   def show
@@ -47,11 +47,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def deactivate
     @user = User.find(current_user.id)
-    @user.destroy
-    session[:user_id] = nil
-    @current_user = nil
-    redirect_to root_url, flash: { success: 'Your account was deleted.'}
+    @user.active = false
+    if @user.save
+      session[:user_id] = nil
+      @current_user = nil
+      redirect_to root_url, flash: { success: 'Your account was deleted.'}
+    else
+      flash.now[:error] = 'Unable to delete your account. Your account is still active.'
+      render 'show'
+    end
   end
 end

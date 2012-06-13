@@ -22,10 +22,10 @@
 	                      admin_path,
 												:class => 'btn btn-mini' %>
 					<% end %>
-					<% if can? :destroy, user %>
-	          <%= link_to 'Destroy',
-	                      '#',
-	                      :method => :delete,
+					<% if can? :deactivate, user %>
+	          <%= link_to 'Deactivate',
+	                      cancel_account_path,
+	                      :method => :put,
 	                      :confirm => 'Are you sure?',
 	                      :class => 'btn btn-mini btn-danger' %>
 						<% end %>

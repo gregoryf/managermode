@@ -8,7 +8,7 @@ Managermode::Application.routes.draw do
   scope '/settings' do
     match '/admin' => 'users#edit', via: :get
     match '/admin' => 'users#update', via: :put
-    match '/cancel_account' => 'users#destroy', via: :delete
+    match '/cancel_account' => 'users#deactivate', via: :put
   end
 
   match '/register' => 'users#new', via: :get

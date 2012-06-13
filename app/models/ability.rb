@@ -7,7 +7,7 @@ class Ability
     can :read, :all
     can :create, User
     can :update, User, id: user.id
-    can :destroy, User, id: user.id
+    can :deactivate, User, id: user.id
     
     # Define abilities for the passed in user here. For example:
     #

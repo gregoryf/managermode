@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20120605203845) do
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password_digest"
-    t.boolean  "active"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "username",                          :null => false
+    t.string   "email",                             :null => false
+    t.string   "password_digest",                   :null => false
+    t.boolean  "active",          :default => true
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
 end
