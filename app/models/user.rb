@@ -19,19 +19,12 @@ class User < ActiveRecord::Base
     case_sensitive: false,
     message: "must be unique and not already taken."
   }
-  
-  validate :check_password, on: :create
-  validate :check_password, on: :update
-
-  def check_password
-    return true unless password.present? || password_confirmation.present?
-    validates :password, confirmation: true
-    validates :password, presence: true
-    validates :password_confirmation, presence: true
-    validates :password, length: {
-      minimum: 6,
-      message: 'must be at least 6 characters long.'
-    }
-  end
+  validates :password, confirmation: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+  validates :password, length: {
+    minimum: 6,
+    message: 'must be at least 6 characters long.'
+  }
   
 end

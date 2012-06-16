@@ -49,8 +49,7 @@ class UsersController < ApplicationController
 
   def deactivate
     @user = User.find(current_user.id)
-    @user.active = false
-    if @user.save
+    if @user.update_attribute(:active, false)
       session[:user_id] = nil
       @current_user = nil
       redirect_to root_url, flash: { success: 'Your account was deleted.'}

@@ -5,7 +5,7 @@
 	<p><strong>Yes, I'm sure I want to delete my account</strong></p>
 	<%= link_to 'Delete My Account',
               cancel_account_url,
-							method: :delete,
+							method: :put,
 							confirm: "Are you sure?",
 							:class => 'btn btn-danger btn-large' %>
 </div>
