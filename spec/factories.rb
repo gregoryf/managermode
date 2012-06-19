@@ -1,8 +1,6 @@
-Factory.define do
-  factory :user do
-    sequence(:username) { |n| "username_#{n}" }
-    sequence(:email) { |n| "email_#{n}@example.com" }
-    password              "foobar"
-    password_confirmation "foobar"
-  end
+Factory.define :user do |u|
+    u.sequence(:username) { |n| "username_#{n}" }
+    u.sequence(:email) { |n| "email_#{n}@example.com" }
+    u.password              "foobar"
+    u.password_confirmation "foobar"
 end

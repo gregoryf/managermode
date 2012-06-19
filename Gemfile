@@ -16,6 +16,9 @@ group :development, :testing do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'guard-spork'
+  gem 'spork'
+  gem 'shoulda-matchers'
 end
 
 # Gems used only for assets and not required

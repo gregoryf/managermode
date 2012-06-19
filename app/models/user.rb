@@ -16,5 +16,7 @@ class User < ActiveRecord::Base
                        presence: true,
                        length: { minimum: 6, message: 'must be at least 6 characters long.' }
   
-  validates :password_confirmation, presence: true  
+  validates :password_confirmation, presence: true
+  
+  scope :active_users, where(active: true)
 end
