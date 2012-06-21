@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605203845) do
+ActiveRecord::Schema.define(:version => 20120620221750) do
 
   create_table "users", :force => true do |t|
-    t.string   "username",                          :null => false
-    t.string   "email",                             :null => false
-    t.string   "password_digest",                   :null => false
-    t.boolean  "active",          :default => true
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.string   "username",                           :null => false
+    t.string   "email",                              :null => false
+    t.string   "password_digest",                    :null => false
+    t.boolean  "active",          :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "sign_up_token"
   end
 
 end

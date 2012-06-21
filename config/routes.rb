@@ -4,6 +4,7 @@ Managermode::Application.routes.draw do
   match '/login' => 'sessions#new', via: :get
   match '/login' => 'sessions#create', via: :post
   match '/logout' => 'sessions#destroy'
+  match '/activate_account/:token' => 'users#activate', as: 'activate_account', via: :get
   
   scope '/settings' do
     match '/admin' => 'users#edit', via: :get

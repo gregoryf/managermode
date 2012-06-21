@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_login, only: [:edit]
   
   def index
-    @users = User.where(active: true)
+    @users = User.active_users
   end
 
   def show
@@ -47,9 +47,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def activate
+    @user = User.find_by_sign_up_token(params[:token])
+    if @user.activate_user
+      redirect_to login_url, flash: { success: 'Your account was activated, now you can login!' }
+    else
+      flash.now[:error] = 'There was a problem activating your account. Please verify that you entered the right URL from your welcome email and try again.'
+      render 'index'
+    end
+  end
+
   def deactivate
     @user = User.find(current_user.id)
-    if @user.update_attribute(:active, false)
+    if @user.deactivate_user
       session[:user_id] = nil
       @current_user = nil
       redirect_to root_url, flash: { success: 'Your account was deleted.'}

@@ -5,6 +5,7 @@ class Ability
     
     user ||= User.new
     can :read, :all
+    can :activate, User
     can :create, User
     can :update, User, id: user.id
     can :deactivate, User, id: user.id

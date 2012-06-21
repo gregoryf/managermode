@@ -6,6 +6,7 @@
       <th>Username</th>
       <th>Email</th>
       <th>Joined</th>
+      <th>Active</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
         <td><%= link_to user.id, '#' %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
+        <td><%= user.active %></td>
         <td><%=l user.created_at %></td>
         <td>
 					<% if can? :update, user %>
