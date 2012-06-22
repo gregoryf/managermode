@@ -14,7 +14,7 @@ Managermode::Application.routes.draw do
 
   match '/register' => 'users#new', via: :get
   match '/register' => 'users#create', via: :post
-  match ':username'  => 'users#show', as: 'show_user',  via: :get
+  match '/show/:username'  => 'users#show', as: 'show_user',  via: :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
